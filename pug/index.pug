@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Eudora-Vue.js
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js')
+    body
+        #app
+            H1 {{ title }}
+            p(v-bind:title="time") {{ text }}
+            li(v-for="value in object") {{value}}
+
+        script(src="js/index.js")
+
+        
