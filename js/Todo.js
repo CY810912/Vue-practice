@@ -26,8 +26,11 @@ var app = new Vue({
             ),
             this.newTodo = ''
         },
-        removeTodo: function(){
-
+        removeTodo: function(todo){
+            var newIndex = this.todos.findIndex(function(item, key){
+                return todo.id === item.id
+            })
+            this.todos.splice(newIndex, 1)
         },
         editTodo: function(){
 

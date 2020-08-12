@@ -33,7 +33,7 @@ html(lang="en")
                             .form-check
                                 input.form-check-input(:id="item.id" type="checkbox" )
                                 label.form-check-label(:for="item.id") {{ item.title }}
-                            button.close.ml-auto(type="button" aria-label="Close")
+                            button.close.ml-auto(type="button" aria-label="Close" @click="removeTodo")
                                 span(aria-hidden="true") ×
                     //- li.list-group-item
                     //-     .d-flex
