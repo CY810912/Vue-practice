@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css')
+        link(rel='stylesheet' href='css/Todo.css')
+        title Document
+    body
+        #app.container.my-3
+            .input-group.mb-3
+                .input-group-prepend
+                    span#basic-addon1.input-group-text 待辦事項
+                input.form-control(type="text", placeholder="準備要做的任務")
+                .input-group-append
+                    button.btn.btn-primary(type="button") 新增
+            .card.text-center
+                .card-header
+                    ul.nav.nav-tabs.card-header-tabs
+                        li.nav-item
+                            a.nav-link.active(href="#") 全部
+                        li.nav-item
+                            a.nav-link(href="#") 進行中
+                        li.nav-item
+                            a.nav-link(href="#") 已完成
+                ul.list-group.list-group-flush.text-left
+                    li.list-group-item
+                        .d-flex
+                            .form-check
+                                input#a1.form-check-input(type="checkbox")
+                                label.form-check-label(for="a1").
+                                    Cras justo odio
+                                    
+                            button.close.ml-auto(type="button", aria-label="Close")
+                                span(aria-hidden="true") ×
+                    li.list-group-item
+                        .d-flex
+                            .form-check
+                                input#a1.form-check-input(type="checkbox")
+                                label.form-check-label.completed(for="a1").
+                                    Cras justo odio
+                                    
+                            button.close.ml-auto(type="button", aria-label="Close")
+                                span(aria-hidden="true") ×
+                    li.list-group-item
+                        input.form-control(type="text")
+                .card-footer.d-flex.justify-content-between
+                    span 還有 3 筆任務未完成
+                    a(href="#") 清除所有任務
+
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js')
