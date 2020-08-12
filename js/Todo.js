@@ -25,7 +25,19 @@ var app = new Vue({
                 }
             ),
             this.newTodo = ''
-        }
+        },
+        removeTodo: function(){
+
+        },
+        editTodo: function(){
+
+        },
+        cancelEdit: function(){
+
+        },
+        doneEdit: function(){
+
+        },
     },
     computed: {
         filteredTodos: function(){

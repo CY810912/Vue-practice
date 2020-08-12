@@ -31,10 +31,8 @@ html(lang="en")
                     li.list-group-item(v-for="item in todos")
                         .d-flex
                             .form-check
-                                input#a1.form-check-input(type="checkbox")
-                                label.form-check-label(for="a1").
-                                    {{ item.title }}
-                                    
+                                input.form-check-input(:id="item.id" type="checkbox" )
+                                label.form-check-label(:for="item.id") {{ item.title }}
                             button.close.ml-auto(type="button" aria-label="Close")
                                 span(aria-hidden="true") ×
                     //- li.list-group-item

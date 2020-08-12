@@ -28,11 +28,8 @@
           <li class="list-group-item" v-for="item in todos">
             <div class="d-flex">
               <div class="form-check">
-                <input class="form-check-input" id="a1" type="checkbox"/>
-                <label class="form-check-label" for="a1">
-                  {{ item.title }}
-                  
-                </label>
+                <input class="form-check-input" :id="item.id" type="checkbox"/>
+                <label class="form-check-label" :for="item.id">{{ item.title }}</label>
               </div>
               <button class="close ml-auto" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
