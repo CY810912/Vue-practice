@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/Todo.css"/>
     <title>Document</title>
   </head>
@@ -11,9 +11,9 @@
     <div class="container my-3" id="app">
       <div class="input-group mb-3">
         <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">待辦事項</span></div>
-        <input class="form-control" type="text" placeholder="準備要做的任務"/>
+        <input class="form-control" type="text" placeholder="準備要做的任務" v-model="newTodo" @keyup.enter="addTodo"/>
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button">新增</button>
+          <button class="btn btn-primary" type="button" @click="addTodo">新增</button>
         </div>
       </div>
       <div class="card text-center">
@@ -25,24 +25,12 @@
           </ul>
         </div>
         <ul class="list-group list-group-flush text-left">
-          <li class="list-group-item">
+          <li class="list-group-item" v-for="item in todos">
             <div class="d-flex">
               <div class="form-check">
                 <input class="form-check-input" id="a1" type="checkbox"/>
                 <label class="form-check-label" for="a1">
-                  Cras justo odio
-                  
-                </label>
-              </div>
-              <button class="close ml-auto" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-flex">
-              <div class="form-check">
-                <input class="form-check-input" id="a1" type="checkbox"/>
-                <label class="form-check-label completed" for="a1">
-                  Cras justo odio
+                  {{ item.title }}
                   
                 </label>
               </div>
@@ -57,5 +45,6 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="js/Todo.js"></script>
   </body>
 </html>
