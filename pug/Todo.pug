@@ -28,7 +28,7 @@ html(lang="en")
                             a.nav-link(href="#" :class="{'active' : visibility == 'completed'}" @click="visibility='completed'") 已完成
                 ul.list-group.list-group-flush.text-left
                     //- ＴoDo
-                    li.list-group-item(v-for="(item, key) in filteredTodos" @dblclick="editTodo(item)")
+                    li.list-group-item(v-for="item in filteredTodos" @dblclick="editTodo(item)")
                         .d-flex( v-if="item.id !== cacheTodo.id" )
                             .form-check
                                 input.form-check-input(:id="item.id" type="checkbox" v-model="item.completed" )
@@ -39,8 +39,11 @@ html(lang="en")
                                             @keyup.esc = "cancelEdit" 
                                             @keyup.enter = "doneEdit(item)")
                 .card-footer.d-flex.justify-content-between
-                    span 還有 3 筆任務未完成
-                    a(href="#") 清除所有任務
+                    section 
+                        |還有  
+                        span {{activeTodosLength}}
+                        |  筆任務未完成
+                    a(href="#" @click="cleanTodo") 清除所有任務
                     
         script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js')
         script(src="js/Todo.js")
