@@ -21,31 +21,23 @@ html(lang="en")
                 .card-header
                     ul.nav.nav-tabs.card-header-tabs
                         li.nav-item
-                            a.nav-link.active(href="#") 全部
+                            a.nav-link(href="#" :class=" {'active' : visibility == 'all' } " @click="visibility='all'") 全部
                         li.nav-item
-                            a.nav-link(href="#") 進行中
+                            a.nav-link(href="#" :class="{'active' : visibility == 'active'}" @click="visibility='active'") 進行中
                         li.nav-item
-                            a.nav-link(href="#") 已完成
+                            a.nav-link(href="#" :class="{'active' : visibility == 'completed'}" @click="visibility='completed'") 已完成
                 ul.list-group.list-group-flush.text-left
                     //- ＴoDo
-                    li.list-group-item(v-for="item in todos")
-                        .d-flex
+                    li.list-group-item(v-for="(item, key) in filteredTodos" @dblclick="editTodo(item)")
+                        .d-flex( v-if="item.id !== cacheTodo.id" )
                             .form-check
-                                input.form-check-input(:id="item.id" type="checkbox" )
-                                label.form-check-label(:for="item.id") {{ item.title }}
-                            button.close.ml-auto(type="button" aria-label="Close" @click="removeTodo")
+                                input.form-check-input(:id="item.id" type="checkbox" v-model="item.completed" )
+                                label.form-check-label(:for="item.id" :class="{'completed':item.completed}" ) {{ item.title }}
+                            button.close.ml-auto(type="button" aria-label="Close" @click="removeTodo(item)")
                                 span(aria-hidden="true") ×
-                    //- li.list-group-item
-                    //-     .d-flex
-                    //-         .form-check
-                    //-             input#a1.form-check-input(type="checkbox")
-                    //-             label.form-check-label.completed(for="a1").
-                    //-                 Cras justo odio
-                                    
-                    //-         button.close.ml-auto(type="button" aria-label="Close")
-                    //-             span(aria-hidden="true") ×
-                    li.list-group-item
-                        input.form-control(type="text")
+                        input.form-control(type="text" v-model="cacheTitle" v-if="item.id == cacheTodo.id"
+                                            @keyup.esc = "cancelEdit" 
+                                            @keyup.enter = "doneEdit(item)")
                 .card-footer.d-flex.justify-content-between
                     span 還有 3 筆任務未完成
                     a(href="#") 清除所有任務
