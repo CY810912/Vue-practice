@@ -5,12 +5,17 @@
             {
                 "id": "1",
                 "title": "買牛奶",
-                "completed": "false"
+                "completed": false
             },
             {
                 "id": "2",
                 "title": "買蘋果",
-                "completed": "false"
+                "completed": false
+            },
+            {
+                "id": "3",
+                "title": "買香蕉",
+                "completed": true
             }
     ]
 }
