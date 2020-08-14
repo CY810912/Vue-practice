@@ -1,3 +1,5 @@
+var urlAPI = "https://eudora-hsj.github.io/Vue-practice/data/todolist.json"
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -16,11 +18,11 @@ var app = new Vue({
         cacheTitle: ''
     },
     created: function () {
-        this.getApi();
+        this.getApi(urlAPI);
     }, 
     methods: {
-        getApi: function(){
-            axios.get("https://eudora-hsj.github.io/Vue-practice/data/todolist.json")
+        getApi: function(url){
+            axios.get(url)
             .then((res) =>{
                 this.todos = res.data.data
             })
@@ -85,7 +87,6 @@ var app = new Vue({
             return showList
         },
         activeTodosLength: function(){
-            console.log(this.todos)
             return this.todos.filter(item => !item.completed ).length
             // var sum = 0
             // this.todos.forEach(function(item){
