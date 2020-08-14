@@ -2,18 +2,32 @@ var app = new Vue({
     el: '#app',
     data: {
         newTodo:'',
-        todos: [
+        todos: 
+        [
             {
-                id: '1',
+                id: '0',
                 title: 'hello',
                 completed: false
             }
         ],
+        
         visibility: 'all',
         cacheTodo: {},
         cacheTitle: ''
     },
+    created: function () {
+        this.getApi();
+    }, 
     methods: {
+        getApi: function(){
+            axios.get("https://eudora-hsj.github.io/Vue-practice/data/todolist.json")
+            .then((res) =>{
+                this.todos = res.data.data
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        },
         addTodo: function(){
             var value = this.newTodo.trim()
             var timestamp = Math.floor(Date.now())
@@ -71,7 +85,8 @@ var app = new Vue({
             return showList
         },
         activeTodosLength: function(){
-            return this.todos.filter(item=> !item.completed ).length
+            console.log(this.todos)
+            return this.todos.filter(item => !item.completed ).length
             // var sum = 0
             // this.todos.forEach(function(item){
             //     if ( !item.completed ) { sum ++ }
