@@ -1,17 +1,16 @@
-[
-    {
-        id: '1',
-        title: '買牛奶',
-        completed: false
-    },
-    {
-        id: '2',
-        title: '買蘋果',
-        completed: false
-    },
-    {
-        id: '2',
-        title: '買青菜',
-        completed: true
-    }
-]
+
+{
+    "data":
+        [
+            {
+                "id": "1",
+                "title": "買牛奶",
+                "completed": "false"
+            },
+            {
+                "id": "2",
+                "title": "買蘋果",
+                "completed": "false"
+            }
+    ]
+}
